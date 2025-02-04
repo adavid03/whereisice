@@ -553,6 +553,7 @@ export default function Home() {
         onLocationChange={handleAddressSearch}
         onOpenChange={onOpenChange}
         onSubmit={handleReport}
+        setCurrentInput={setCurrentInput}
       />
       {selectedReport && (
         <ReportDetails

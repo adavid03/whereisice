@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { 
   Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, 
   Button, Input, Checkbox, CheckboxGroup, Textarea,
@@ -12,6 +13,7 @@ type ReportModalProps = {
   onClose: () => void;
   onSubmit: () => void;
   currentInput: string;
+  setCurrentInput: (value: string) => void;
   onLocationChange: (value: string) => void;
   agentCount: number;
   setAgentCount: (count: number) => void;
@@ -45,6 +47,7 @@ export function ReportModal({
   onClose,
   onSubmit: handleReport,
   currentInput,
+  setCurrentInput,
   onLocationChange: handleAddressSearch,
   agentCount,
   setAgentCount,
