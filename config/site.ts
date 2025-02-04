@@ -7,53 +7,13 @@ export const siteConfig = {
     {
       label: "Map",
       href: "/",
-    },
-    {
-      label: "Location Reports",
-      href: "/reports",
-    },
-    {
-      label: "Analytics",
-      href: "/analytics",
-    },
-    {
-      label: "Get Help",
-      href: "/help",
-    },
-    {
-      label: "Donate",
-      href: "/donate",
     }
   ],
   navMenuItems: [
     {
       label: "Map",
       href: "/",
-    },
-    {
-      label: "Location Reports",
-      href: "/reports",
-    },
-    {
-      label: "Analytics",
-      href: "/analytics",
-    },
-    {
-      label: "Get Help",
-      href: "/help",
-    },
-    {
-      label: "Donate",
-      href: "/donate",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "How does it work?",
-      href: "/how-it-works",
-    },
+    }
   ],
   links: {
     github: "https://github.com/heroui-inc/heroui",

@@ -18,7 +18,7 @@ import { GithubIcon, Logo } from "@/components/icons";
 
 export const Navbar = () => {
   return (
-    <HeroUINavbar height="2.5rem" maxWidth="xl">
+    <HeroUINavbar height="2.5rem" maxWidth="xl" className="fixed top-0 left-0 right-0 z-50">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
@@ -26,9 +26,11 @@ export const Navbar = () => {
             <div className="flex">
               <p className="font-bold font-avenir">whereis</p>
               <p className="font-bold font-avenir text-cyan-500">ICE</p>
+              <p className="font-extralight text-xs font-avenir text-grey-500">beta</p>
             </div>
           </NextLink>
         </NavbarBrand>
+
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>

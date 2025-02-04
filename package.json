@@ -1,6 +1,6 @@
 {
  "name": "whereisice",
- "version": "0.0.1a",
+ "version": "1.0.0b",
  "private": true,
  "scripts": {
   "dev": "next dev --turbopack",
@@ -25,6 +25,8 @@
   "@heroui/theme": "2.4.5",
   "@react-aria/ssr": "3.9.7",
   "@react-aria/visually-hidden": "3.8.18",
+  "@supabase/ssr": "^0.5.2",
+  "@supabase/supabase-js": "^2.48.1",
   "autoprefixer": "^10.x.x",
   "clsx": "2.1.1",
   "framer-motion": "11.13.1",

@@ -1,0 +1,123 @@
+WhereIsICE API Documentation
+
+Base URL: https://whereisice.org/api
+
+1. GET REPORTS
+--------------
+Endpoint: GET /reports
+Gets reports from the last 24 hours within map bounds.
+
+Query parameters:
+- minLat: minimum latitude
+- maxLat: maximum latitude
+- minLng: minimum longitude
+- maxLng: maximum longitude
+
+Example:
+GET /reports?minLat=41.0&maxLat=42.0&minLng=-104.0&maxLng=-103.0
+
+
+2. CREATE REPORT
+---------------
+Endpoint: POST /reports
+
+Required fields:
+- agentCount: number of agents seen
+- activities: array of activity codes
+- location: string address
+- latitude: number
+- longitude: number
+- clothing: array of clothing codes
+- time: string (HH:MM format)
+- equipment: array of equipment codes
+
+Optional fields:
+- otherActivity: string
+- otherClothing: string
+- otherEquipment: string
+- details: string
+
+Activity codes:
+1 = Arrests
+2 = Patrols
+3 = Questioning
+4 = ID Checks
+5 = Other
+
+Clothing codes:
+6 = Tactical Gear
+7 = Plain Clothes
+8 = Uniforms
+9 = Other
+
+Equipment codes:
+10 = Handcuffs
+11 = Zip Cuffs
+12 = Weapons
+13 = Marked Vehicle
+14 = Unmarked Vehicle
+15 = Other
+
+
+3. VOTE REPORT AS OVER
+---------------------
+Endpoint: POST /reports/vote
+
+Required fields:
+- reportId: number (ID of the report)
+- voterId: string (unique ID for the voter)
+
+A report is considered over when it receives 2 votes.
+
+
+Example Usage:
+-------------
+// Get reports in an area
+fetch('https://whereisice.org/api/reports?minLat=41.0&maxLat=42.0&minLng=-104.0&maxLng=-103.0')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// Create a new report
+fetch('https://whereisice.org/api/reports', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    agentCount: 2,
+    activities: ["1", "3"],  // Arrests and Questioning
+    location: "123 Main St",
+    latitude: 41.5,
+    longitude: -103.5,
+    clothing: ["7"],        // Plain Clothes
+    time: "14:30",
+    equipment: ["14"],      // Unmarked Vehicle
+    details: "Optional additional details"
+  })
+});
+
+// Vote a report as over
+fetch('https://whereisice.org/api/reports/vote', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    reportId: 123,
+    voterId: "unique-voter-id"
+  })
+});
+
+Notes:
+- All endpoints are public and support CORS
+- No authentication required
+- No rate limiting currently implemented
+
+Usage:
+- Do not abuse the API, and do not make excessive requests.
+- If you are using the API for a project, please credit whereisice.org.
+- The API is free and public, including for commercial use.
+
+Note from the developer:
+- This API runs on a Next.JS server hosted on a low power machine.
+- The API might be easy to overload, so please be considerate.
+- Anyone may use the API.
+- The API is completely anonymous, no personal identifying information is stored, fetched or used.
+- It is not uncommon for the API to temporarily stop working, as it is hosted in Wyoming and the internet can be flaky.
+- Rate limiting will eventually be implemented, at least through Cloudflare.
