@@ -1,3 +1,5 @@
+import { GeocodingResult } from "@/types/reports";
+
 export async function geocodeLocation(address: string): Promise<GeocodingResult> {
   const geocoder = new window.mapkit.Geocoder({ language: "en-US" });
   
